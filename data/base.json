@@ -1,0 +1,19 @@
+{
+    "employees":[
+        {
+            "givenName":"三",
+            "familyName":"张",
+            "salary":1,
+        },
+        {
+            "givenName":"四",
+            "familyName":"李",
+            "salary":2,
+        },
+        {
+            "givenName":"五",
+            "familyName":"王",
+            "salary":3,
+        },
+    ],
+}
