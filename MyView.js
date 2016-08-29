@@ -26,8 +26,9 @@ export default class MyView extends Component {
         <ScrollView>
           <DrawView style={{width:width, height:height, backgroundColor:'#AAA'}}
             transPos={{x:50,y:100}}
-            scaleValue={{x:2,y:1}}
+            scaleValue={{x:1,y:1}}
             drawData={{
+              order:['lines', 'rects', 'circles', 'texts'],
               lines:[
                 {x1: -10, y1: 30, x2: 50, y2: 30, color: processColor('#555'), stroke: 1},
                 {x1: 10, y1: 40, x2: 50, y2: 40, color: processColor('#555'), stroke: 1},
@@ -44,6 +45,11 @@ export default class MyView extends Component {
                 {x: 50, y: 150, radius: 10, color: processColor('#F00'), fill: 1},
                 {x: 90, y: 150, radius: 10, color: processColor('#F00'), fill: 2, sideColor: processColor('#0FF'), sideWidth: 1},
               ],
+              texts:[
+                {x:10, y:150, color: processColor('#00F'), fontSize:14, text:'我'},
+                {x:50, y:150, color: processColor('#00F'), fontSize:14, text:'你'},
+                {x:90, y:150, color: processColor('#00F'), fontSize:14, text:'草字头'},
+              ]
             }}>
           </DrawView>
           <Text style={{textAlign:'center',marginTop:30,backgroundColor:'gray',color:'white',fontSize:40}} onPress={()=>{this.props.navigator.pop();}}>返回</Text>

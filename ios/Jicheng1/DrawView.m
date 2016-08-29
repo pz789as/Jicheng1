@@ -50,11 +50,17 @@
   if (!CGRectIsEmpty(self.clipping)) {
     CGContextClipToRect(context, self.clipping);
   }
-  for (NSString *key in _drawData) {
+  UIColor * color;
+  NSArray * orderKey = [RCTConvert NSArray:_drawData[@"order"]];
+//  NSLog(@"%@", orderKey);
+//  for (NSString *key in orderKey){
+//    NSLog(@"%@", key);
+//  }
+  for (NSString *key in orderKey) {
     NSArray* array = [RCTConvert NSArray:_drawData[key]];
     if ([key isEqualToString:@"lines"]){
       for (int i=0; i<array.count; i++) {
-        UIColor * color = [RCTConvert UIColor:array[i][@"color"]];
+        color = [RCTConvert UIColor:array[i][@"color"]];
         CGContextSetStrokeColorWithColor(context, color.CGColor);
         CGContextSetLineWidth(context, [RCTConvert CGFloat:array[i][@"stroke"]]);
         CGPoint aPoints[2];//坐标点
@@ -66,7 +72,7 @@
     }else if ([key isEqualToString:@"rects"]){
       for(int i=0;i<array.count;i++){
         CGRect rect = [RCTConvert CGRect:array[i]];
-        UIColor* color = [RCTConvert UIColor:array[i][@"color"]];
+        color = [RCTConvert UIColor:array[i][@"color"]];
         NSInteger fillType = [RCTConvert NSInteger:array[i][@"fill"]];
         if (fillType == 2){
           UIColor* sideColor = [RCTConvert UIColor:array[i][@"sideColor"]];
@@ -88,7 +94,7 @@
     }else if ([key isEqualToString:@"circles"]){
       for(int i=0;i<array.count;i++){
         CGPoint point = [RCTConvert CGPoint:array[i]];
-        UIColor* color = [RCTConvert UIColor:array[i][@"color"]];
+        color = [RCTConvert UIColor:array[i][@"color"]];
         CGFloat radius = [RCTConvert CGFloat:array[i][@"radius"]];
         NSInteger fillType = [RCTConvert NSInteger:array[i][@"fill"]];
         CGContextAddArc(context, point.x, point.y, radius, 0, 2*PI, 0);
@@ -108,10 +114,26 @@
           CGContextDrawPath(context, kCGPathFill);//绘画路径
         }
       }
-    }else if ([key isEqualToString:@"text"]){
-//      CGContextSetRGBFillColor (context,  1, 0, 0, 1.0);//设置填充颜色
-//      UIFont  *font = [UIFont boldSystemFontOfSize:15.0];//设置
-//      [@"画圆：" drawInRect:CGRectMake(10, 20, 80, 20) withFont:font];
+    }else if ([key isEqualToString:@"texts"]){
+      NSMutableParagraphStyle* paragraph = [[NSMutableParagraphStyle alloc] init];
+      paragraph.alignment = NSTextAlignmentCenter;
+      for(int i=0;i<array.count;i++){
+        color = [RCTConvert UIColor:array[i][@"color"]];
+        CGFloat fontSize = [RCTConvert CGFloat:array[i][@"fontSize"]];
+        UIFont* font = [UIFont fontWithName:@"Arial" size:fontSize];
+        NSString* text = [RCTConvert NSString:array[i][@"text"]];
+        CGRect rect = [text boundingRectWithSize:CGSizeMake(MAXFLOAT, fontSize * 2)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{NSFontAttributeName:font,NSParagraphStyleAttributeName:paragraph} context:nil];
+        CGPoint point = [RCTConvert CGPoint:array[i]];
+        rect.origin.x = point.x - rect.size.width / 2;
+        rect.origin.y = point.y - rect.size.height / 2;
+        [text drawInRect:rect
+           withAttributes:@{
+                            NSFontAttributeName: font,
+                            NSForegroundColorAttributeName: color,
+                          }];
+      }
     }
   }
 }
