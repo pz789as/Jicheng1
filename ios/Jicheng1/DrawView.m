@@ -58,7 +58,7 @@
 //  }
   for (NSString *key in orderKey) {
     NSArray* array = [RCTConvert NSArray:_drawData[key]];
-    if ([key isEqualToString:@"lines"]){
+    if ([key containsString:@"lines"]){
       for (int i=0; i<array.count; i++) {
         color = [RCTConvert UIColor:array[i][@"color"]];
         CGContextSetStrokeColorWithColor(context, color.CGColor);
@@ -69,8 +69,8 @@
         CGContextAddLines(context, aPoints, 2);//添加线
         CGContextDrawPath(context, kCGPathStroke); //根据坐标绘制路径
       }
-    }else if ([key isEqualToString:@"rects"]){
-      for(int i=0;i<array.count;i++){
+    }else if ([key containsString:@"rects"]){
+      for(int i=0; i<array.count; i++){
         CGRect rect = [RCTConvert CGRect:array[i]];
         color = [RCTConvert UIColor:array[i][@"color"]];
         NSInteger fillType = [RCTConvert NSInteger:array[i][@"fill"]];
@@ -91,8 +91,8 @@
           CGContextFillRect(context, rect);
         }
       }
-    }else if ([key isEqualToString:@"circles"]){
-      for(int i=0;i<array.count;i++){
+    }else if ([key containsString:@"circles"]){
+      for(int i=0; i<array.count; i++){
         CGPoint point = [RCTConvert CGPoint:array[i]];
         color = [RCTConvert UIColor:array[i][@"color"]];
         CGFloat radius = [RCTConvert CGFloat:array[i][@"radius"]];
@@ -114,10 +114,10 @@
           CGContextDrawPath(context, kCGPathFill);//绘画路径
         }
       }
-    }else if ([key isEqualToString:@"texts"]){
+    }else if ([key containsString:@"texts"]){
       NSMutableParagraphStyle* paragraph = [[NSMutableParagraphStyle alloc] init];
       paragraph.alignment = NSTextAlignmentCenter;
-      for(int i=0;i<array.count;i++){
+      for(int i=0; i<array.count; i++){
         color = [RCTConvert UIColor:array[i][@"color"]];
         CGFloat fontSize = [RCTConvert CGFloat:array[i][@"fontSize"]];
         UIFont* font = [UIFont fontWithName:@"Arial" size:fontSize];
