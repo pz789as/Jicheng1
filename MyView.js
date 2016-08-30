@@ -20,11 +20,76 @@ var {height, width} = Dimensions.get('window');
 import DrawView from './DrawView';
 
 export default class MyView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      blnUpdata: false,
+    };
+    this.myData = {
+      order: ['lines'],
+      lines: [],
+    };
+    this.myData.lines.push({
+      x1: 10,
+      y1: 10,
+      x2: 100,
+      y2: 100,
+      color: processColor('#FF0'),
+      stroke: 1
+    });
+  }
+  
+  componentWillMount() {
+    this.intervalFrame = setInterval(this.updateFrame.bind(this), 1000);
+  }
+  componentWillUnmount() {
+    this.intervalFrame && clearInterval(this.intervalFrame);
+  }
+  
+  updateFrame(){
+    // this.setState({
+    //   x1: Math.random() * width,
+    //   x2: Math.random() * width,
+    //   y1: Math.random() * height,
+    //   y2: Math.random() * height,
+    // });
+
+    // var line = this.myData.lines[0];
+    // console.log('1', this.myData.lines[0]);
+    // line.x = Math.random() * width;
+    // console.log('2', this.myData.lines[0]);
+    // this.myData.lines[0] = {
+    //       x1: Math.random() * width,
+    //       y1: Math.random() * height,
+    //       x2: Math.random() * width,
+    //       y2: Math.random() * height,
+    //       color: processColor('#FF0'),
+    //       stroke: 1
+    //     };
+
+    this.myData = {
+      order: ['lines'],
+      lines: [
+        {
+          x1: Math.random() * width,
+          y1: Math.random() * height,
+          x2: Math.random() * width,
+          y2: Math.random() * height,
+          color: processColor('#FF0'),
+          stroke: 1
+        }
+      ]
+    };
+    this.setState({
+      blnUpdata: !this.state.blnUpdata,
+    });
+  }
+  
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <DrawView style={{width:width, height:height, backgroundColor:'#AAA'}}
+          {/*<DrawView style={{width:width, height:height, backgroundColor:'#AAA'}}
             transPos={{x:50,y:100}}
             scaleValue={{x:1,y:1}}
             drawData={{
@@ -51,7 +116,11 @@ export default class MyView extends Component {
                 {x:90, y:150, color: processColor('#00F'), fontSize:14, text:'草字头'},
               ]
             }}>
-          </DrawView>
+          </DrawView>*/}
+          <DrawView style={{width:width, height:height, backgroundColor:'#AAA'}}
+            transPos={{x:0, y:0}}
+            scaleValue={{x:1, y:1}}
+            drawData={this.myData}/>
           <Text style={{textAlign:'center',marginTop:30,backgroundColor:'gray',color:'white',fontSize:40}} onPress={()=>{this.props.navigator.pop();}}>返回</Text>
         </ScrollView>
       </View>

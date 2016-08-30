@@ -38,6 +38,8 @@
   self.drawView.backgroundColor = _backgroundColor;
   
   [self insertSubview:self.drawView atIndex:0];
+  
+  [self.drawView setNeedsDisplay];
 }
 
 - (UIColor *)backgroundColor
