@@ -32,6 +32,7 @@ import BlurTest from './BlurTest';
 import SortListView from './SortListView';
 import DeviceInfos from './DeviceInfos';
 import MyView from './MyView';
+import SocketIO from './SocketIO';
 
 class Jicheng1 extends Component {
   constructor(props){
@@ -105,6 +106,9 @@ class Jicheng1 extends Component {
         break;
       case 'myview':
         Component = MyView;
+        break;
+      case 'socketio':
+        Component = SocketIO;
         break;
     }
 

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -38,6 +37,7 @@
 		90EF4CAC1D6BE7D800B5C622 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EF4CAB1D6BE7CC00B5C622 /* libART.a */; };
 		D33365266D6F417182FFDCA3 /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A9FA56887248308702C389 /* libRCTHotUpdate.a */; };
 		F83E2B811A6F48B4B3EB414A /* libRCTFXBlurView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FED0CA37060445ACA625E4E2 /* libRCTFXBlurView.a */; };
+		04C1CF6B0B2142B2906517B3 /* libTcpSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DAC972C887B4B7397B3D7A5 /* libTcpSockets.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +217,8 @@
 		D79B35E5F60647588CF5B073 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		E227E3407FAD4FD092367DC0 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
 		FED0CA37060445ACA625E4E2 /* libRCTFXBlurView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFXBlurView.a; sourceTree = "<group>"; };
+		974300CBE471446DB5C119E5 /* TcpSockets.xcodeproj */ = {isa = PBXFileReference; name = "TcpSockets.xcodeproj"; path = "../node_modules/react-native-tcp/ios/TcpSockets.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		6DAC972C887B4B7397B3D7A5 /* libTcpSockets.a */ = {isa = PBXFileReference; name = "libTcpSockets.a"; path = "libTcpSockets.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 				619C7F98EBE44133947FF8F4 /* libRNBlur.a in Frameworks */,
 				84C652C5436944E094E44759 /* libRNDeviceInfo.a in Frameworks */,
 				F83E2B811A6F48B4B3EB414A /* libRCTFXBlurView.a in Frameworks */,
+				04C1CF6B0B2142B2906517B3 /* libTcpSockets.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +389,7 @@
 				816031E5F90644BAB1D65F9A /* RNBlur.xcodeproj */,
 				D79B35E5F60647588CF5B073 /* RNDeviceInfo.xcodeproj */,
 				3ED8C48FDFCF420589AC26A9 /* RCTFXBlurView.xcodeproj */,
+				974300CBE471446DB5C119E5 /* TcpSockets.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -868,6 +872,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jicheng1.app/Jicheng1";
@@ -884,6 +889,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -910,6 +916,8 @@
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-fxblurview/RCTFXBlurView/RCTFXBlurView/**",
+					"$(SRCROOT)/../node_modules/react-native-socketio/ios/RNSwiftSocketIO",
+					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 				);
 				INFOPLIST_FILE = Jicheng1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -939,6 +947,8 @@
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-fxblurview/RCTFXBlurView/RCTFXBlurView/**",
+					"$(SRCROOT)/../node_modules/react-native-socketio/ios/RNSwiftSocketIO",
+					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 				);
 				INFOPLIST_FILE = Jicheng1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -995,6 +1005,7 @@
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-fxblurview/RCTFXBlurView/RCTFXBlurView/**",
+					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1039,6 +1050,7 @@
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-fxblurview/RCTFXBlurView/RCTFXBlurView/**",
+					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;

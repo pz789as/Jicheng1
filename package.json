@@ -17,6 +17,11 @@
     "react-native-fxblurview": "^1.0.2",
     "react-native-sortable-listview": "^0.1.1",
     "react-native-sound": "^0.8.3",
-    "react-native-update": "^1.1.2"
+    "react-native-tcp": "^2.0.1",
+    "react-native-update": "^1.1.2",
+    "buffer": "^4.9.1"
+  },
+  "browser":{
+    "net": "react-native-tcp"
   }
 }

@@ -1,6 +1,8 @@
 package com.jicheng1;
 
 import com.facebook.react.ReactActivity;
+import com.peel.react.TcpSocketsModule;
+import com.gcrabtree.rctsocketio.SocketIoPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.cmcewen.blurview.BlurViewPackage;
 

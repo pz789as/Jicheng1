@@ -234,6 +234,11 @@ export default class RegisterLeaf extends Component {
                   ()=>{this.props.navigator.push({name:'myview'});}}>
                   自定义原生UI组件 展示
           </Text>
+          <Text style={styles.testSelect} 
+                onPress={
+                  ()=>{this.props.navigator.push({name:'socketio'});}}>
+                  SocketIO插件 展示
+          </Text>
         </View>
         <View style={styles.updateStyle}>
           <Text style={styles.textStyle}>
